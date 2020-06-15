@@ -10,10 +10,13 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class Mail {
     @NonNull
-    private String mailTo;
+    private final String mailTo;
+
     @NonNull
-    private String subject;
+    private final String subject;
+
     @NonNull
-    private String message;
+    private final String message;
+
     private String toCc;
 }

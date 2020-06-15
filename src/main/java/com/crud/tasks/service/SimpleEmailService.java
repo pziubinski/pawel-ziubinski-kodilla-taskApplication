@@ -34,7 +34,9 @@ public class SimpleEmailService {
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
 
-        if (!mail.getToCc().isEmpty()) {
+        if (mail.getToCc() == null) {
+            LOGGER.error("Failed to set up CC.");
+        } else {
             mailMessage.setCc(mail.getToCc());
             LOGGER.info("Set up CC.");
         }
