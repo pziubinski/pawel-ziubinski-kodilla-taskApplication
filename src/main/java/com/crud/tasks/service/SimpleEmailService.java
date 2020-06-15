@@ -1,6 +1,7 @@
 package com.crud.tasks.service;
 
 import com.crud.tasks.domain.Mail;
+import org.apache.logging.log4j.util.Strings;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,11 +35,8 @@ public class SimpleEmailService {
         mailMessage.setSubject(mail.getSubject());
         mailMessage.setText(mail.getMessage());
 
-        if (mail.getToCc() == null) {
-            LOGGER.error("Failed to set up CC.");
-        } else {
+        if (Strings.isNotEmpty(mail.getToCc())) {
             mailMessage.setCc(mail.getToCc());
-            LOGGER.info("Set up CC.");
         }
 
         return mailMessage;
