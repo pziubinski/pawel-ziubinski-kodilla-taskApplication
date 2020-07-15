@@ -12,8 +12,6 @@ import org.springframework.mail.javamail.JavaMailSender;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @RunWith(MockitoJUnitRunner.class)
 public class SimpleEmailServiceTest {
 
@@ -57,7 +55,4 @@ public class SimpleEmailServiceTest {
         // Then
         verify(javaMailSender, times(1)).send(mailMessage);
     }
-
-
-
 }
