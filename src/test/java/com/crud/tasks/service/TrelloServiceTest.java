@@ -22,13 +22,7 @@ public class TrelloServiceTest {
     private TrelloService trelloService;
 
     @Mock
-    private AdminConfig adminConfig;
-
-    @Mock
     private TrelloClient trelloClient;
-
-    @Mock
-    private SimpleEmailService simpleEmailService;
 
     @Test
     public void shouldFetchTrelloBoard() {
@@ -43,7 +37,5 @@ public class TrelloServiceTest {
 
         //THEN
         assertEquals(1, fetchedTrelloBoards.size());
-
-
     }
 }
