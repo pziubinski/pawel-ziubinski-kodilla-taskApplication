@@ -15,7 +15,7 @@ import java.util.Optional;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class DbServiceTest {
@@ -83,17 +83,15 @@ public class DbServiceTest {
         tasks.add(task1);
         tasks.add(task2);
 
-        when(taskRepository.save(task1)).thenReturn(task1);
         dbService.saveTask(task1);
-
-        //when(taskRepository.deleteById(1L)).then(dbService.getTask(1L));
+        dbService.saveTask(task2);
 
         //WHEN
-        List<Task> taskList = dbService.getAllTasks();
+        dbService.deleteTask(1L);
+        dbService.deleteTask(2L);
 
         //THEN
-        assertEquals(0, taskList.size());
-
+        verify(taskRepository, times(1)).deleteById(1L);
+        verify(taskRepository, times(1)).deleteById(1L);
     }
-
 }

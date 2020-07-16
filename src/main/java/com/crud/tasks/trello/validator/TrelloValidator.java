@@ -24,11 +24,15 @@ public class TrelloValidator {
     public List<TrelloBoard> validateTrelloBoards(final List<TrelloBoard> trelloBoards) {
         LOGGER.info("Starting filtering boards...");
 
+        System.out.println("TB: " + trelloBoards);
+
         List<TrelloBoard> filteredBoards = trelloBoards.stream()
                 .filter(trelloBoard -> !trelloBoard.getName().equalsIgnoreCase("test"))
                 .collect(Collectors.toList());
 
         LOGGER.info("Boards have been filtered. Current list size: " + filteredBoards.size());
+
+        System.out.println("FTB: " + filteredBoards);
 
         return filteredBoards;
     }
